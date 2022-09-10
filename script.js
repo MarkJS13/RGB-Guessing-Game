@@ -7,7 +7,7 @@ const trials = document.querySelector('.trials');
 const guessDisplay = document.querySelector('#guess-display');
 
 
-let numbers = () => {
+const numbers = () => {
     let red = Math.floor(Math.random() * 201);
     let green = Math.floor(Math.random() * 201);
     let blue = Math.floor(Math.random() * 201);
@@ -25,7 +25,9 @@ let num6 = numbers()
 
 let arrNum = [num1, num2, num3, num4, num5, num6]
 
-let randomColor = () => {
+let click = 0;
+
+const randomColor = () => {
     let nmbr = Math.floor(Math.random() * 6);
     let res = arrNum[nmbr]
     
@@ -97,7 +99,7 @@ let randomColor = () => {
         e.addEventListener('click', e => {
         if(e.target.style.backgroundColor === compare) {
             greeting.innerText = 'You are right';
-        
+            startGame.innerText = 'Play Again';
             guessDisplay.style.backgroundColor = compare;
         } else {
             greeting.innerText = 'Wrong! Try again.';
@@ -121,7 +123,7 @@ let randomColor = () => {
             } else {
                 trials.innerText = '1 more trial!'
             }
-            greeting.innerText = 'You are right.';
+            
             
         } else if(count === 3){
             if(e.target.style.backgroundColor !== compare) {
@@ -133,11 +135,8 @@ let randomColor = () => {
             }
             
         }
-        
-    //    if(count > 3) {
-        
-    //    }
-        
+
+
         startGame.style.display = 'block';
         e.target.style.visibility = 'hidden';
         })
